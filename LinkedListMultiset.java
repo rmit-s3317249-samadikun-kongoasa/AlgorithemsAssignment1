@@ -51,7 +51,7 @@ public class LinkedListMultiset<T> extends Multiset<T>
 		// Implement me!		
 		
 		Node currNode = mHead;
-		int temp=0;
+		int counter=0;
 		
         while (currNode != null) {
             if (currNode.getValue().equals((String) item)) {
@@ -134,12 +134,14 @@ public class LinkedListMultiset<T> extends Multiset<T>
 	  private class Node {
 	        protected String mValue;
 	        protected Node mNext;
+	        protected Node mPrev;
 
 	        int counter;
 
 	        public Node(String value) {
 	            mValue = value;
 	            mNext = null;
+	            mPrev = null;
 	            counter = 1;
 	        }
 
@@ -162,6 +164,10 @@ public class LinkedListMultiset<T> extends Multiset<T>
 	        public Node getNext() {
 	            return mNext;
 	        }
+	        
+	        public Node getPrev(){
+	        	return mPrev;
+	        }
 
 	        public void setValue(String value) {
 	            mValue = value;
@@ -169,6 +175,10 @@ public class LinkedListMultiset<T> extends Multiset<T>
 
 	        public void setNext(Node next) {
 	            mNext = next;
+	        }
+	        
+	        public void setPrev(Node prev) {
+	            mPrev = prev;
 	        }
 	    }
 	
