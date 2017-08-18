@@ -28,19 +28,22 @@ public class LinkedListMultiset<T> extends Multiset<T>
 		 // otherwise, add node to the head of list.
 		else {
 	        Node currNode = mHead;
-	        Node parentNode = null;
 	      ///if already exist
 	        while (currNode != null) {
 	        	
-	            if (currNode.getValue().
-	                    equals(newNode.getValue())) {
+	            if (currNode.getValue().equals(newNode.getValue())) {
 	                currNode.addCounter();
+	                mLength++;
 	                return;
 	            }
-	            parentNode = currNode;
 	            currNode = currNode.getNext();
+	            
 	        }
-	        parentNode.setNext(newNode);
+	        
+	        newNode.setNext(mHead);
+            mHead.setPrev(newNode);
+            mHead = newNode;
+	        //tempNode.setNext(newNode);
 	    }
 	    mLength++;
 		return;
@@ -51,7 +54,6 @@ public class LinkedListMultiset<T> extends Multiset<T>
 		// Implement me!		
 		
 		Node currNode = mHead;
-		int counter=0;
 		
         while (currNode != null) {
             if (currNode.getValue().equals((String) item)) {
